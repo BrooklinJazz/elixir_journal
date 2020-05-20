@@ -1,6 +1,6 @@
-defmodule ElixirJournal do
+defmodule Journal do
   @moduledoc """
-  Documentation for `ElixirJournal`.
+  Documentation for `Journal`.
   """
 
   def write(path, content) do
@@ -13,7 +13,7 @@ defmodule ElixirJournal do
   end
 
   def draft(name \\ "entry", content \\ "") do
-    name |> prepend_time |> save_entry(content)
+    String.split(name) |> Enum.join("_") |> prepend_time |> save_entry(content)
   end
 
   def prepend_time(name) do

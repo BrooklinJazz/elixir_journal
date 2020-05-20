@@ -1,4 +1,4 @@
-defmodule ElixirJournal.MixProject do
+defmodule Journal.MixProject do
   use Mix.Project
 
   def project do
