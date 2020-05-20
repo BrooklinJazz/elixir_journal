@@ -1,4 +1,4 @@
-defmodule Journal.Entry do
+defmodule Journal.Template do
   import Journal.FileManager
 
   def blank do
@@ -8,8 +8,7 @@ defmodule Journal.Entry do
   def bullet_day do
     new(
       "bullet journal day",
-      "
-## I am grateful for:
+"## I am grateful for:
 - 
 - 
 - 
@@ -30,8 +29,7 @@ defmodule Journal.Entry do
   def bullet_night do
     new(
       "bullet journal night",
-      "
-## Amazing things that happened today…
+"## Amazing things that happened today…
 - 
 - 
 - 
