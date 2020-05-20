@@ -3,16 +3,30 @@ defmodule ElixirJournal do
   Documentation for `ElixirJournal`.
   """
 
-  @doc """
-  Hello world.
+  def write(path, content) do
+    File.mkdir_p!(Path.dirname(path))
+    File.write(path, content)
+  end
 
-  ## Examples
+  def save_entry(name, content) do
+    write("entries/#{name}.md", content)
+  end
 
-      iex> ElixirJournal.hello()
-      :world
+  def draft(name \\ "entry", content \\ "") do
+    name |> prepend_time |> save_entry(content)
+  end
 
-  """
-  def hello do
-    :world
+  def prepend_time(name) do
+    time = DateTime.utc_now()
+    timestamp = "#{time.year}_#{time.month}_#{time.day}_#{time.hour}:#{time.minute}"
+    timestamp <> "_" <> name
+  end
+
+  def addZero(min) when min >= 10 do
+    min
+  end
+
+  def addZero(min) do
+    "#{min}0"
   end
 end
